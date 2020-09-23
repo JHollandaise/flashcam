@@ -83,7 +83,7 @@ void FlashCam::clear() {
     _initialised = false;
     _active      = false;
 
-    
+
     FlashCamPLL::init(&_state);
     
     //init with default parameter set;
@@ -570,7 +570,7 @@ void FlashCam::buffer_callback(MMAL_PORT_T *port, MMAL_BUFFER_HEADER_T *buffer) 
 #ifdef BUILD_FLASHCAM_WITH_PLL
             FlashCamPLL::update(buffer->pts, &pll_state);
 #endif
-            
+
             //OpenGL processing?
             if (userdata->settings->opengl_enabled) {
 #ifdef BUILD_FLASHCAM_WITH_OPENGL      

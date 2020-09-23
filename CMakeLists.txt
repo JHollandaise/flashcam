@@ -13,6 +13,9 @@ option(TEST_PLL_STEPRESPONSE "compile for PLL stepresponse recording" OFF)
 set(CMAKE_CXX_FLAGS "-fpermissive -std=c++11 ${CMAKE_CXX_FLAGS}")
 set(CMAKE_C_FLAGS   "-fpermissive -std=c++11 ${CMAKE_C_FLAGS}")
 
+# add userland pkg-config files
+set(ENV{PKG_CONFIG_PATH} /opt/vc/lib/pkgconfig)
+
 # Main sources for FlashCam-lib
 set(FLASHCAM_SOURCES FlashCam.cpp FlashCam_types.cpp util/FlashCam_util_mmal.cpp)
 
@@ -37,7 +40,7 @@ link_directories( ${BCMHOST_LIBRARY_DIRS} )
 
 # EGL -> optional (required for OpenGL rendering)
 pkg_search_module(EGL egl)
-if (EGL_FOUND) 
+if (EGL_FOUND)
     include_directories(${EGL_INCLUDE_DIRS})
     link_directories(${EGL_LIBRARY_DIRS} )
 #add OpenGL sources
